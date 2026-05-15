@@ -469,7 +469,8 @@ function CTA() {
   return (
     <section id="ukljuci" className="relative py-28 lg:py-36">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-        <div className="relative overflow-hidden border border-border bg-card p-10 lg:p-20 text-center">
+        {/* Contact block */}
+        <div className="relative overflow-hidden border border-border bg-card p-10 lg:p-20 text-center mb-8">
           <div className="absolute -top-32 -right-32 h-96 w-96 rounded-full bg-accent/10 blur-3xl" />
           <div className="absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-moss/10 blur-3xl" />
           <div className="relative">
@@ -495,15 +496,65 @@ function CTA() {
                   →
                 </span>
               </a>
-              <a
-                href="#"
-                className="inline-flex items-center gap-3 rounded-full border border-foreground/30 pl-7 pr-3 py-3 text-sm font-medium hover:border-foreground transition-colors"
-              >
-                Podrži Nas
-                <span className="grid place-items-center h-8 w-8 rounded-full bg-foreground text-background">
-                  ♥
+            </div>
+          </div>
+        </div>
+
+        {/* Donation block */}
+        <div className="relative overflow-hidden border border-border bg-foreground text-background p-10 lg:p-16">
+          <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-accent/20 blur-3xl" />
+          <div className="absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-moss/20 blur-3xl" />
+          <div className="relative grid lg:grid-cols-2 gap-10 items-center">
+            <div>
+              <div className="text-xs uppercase tracking-[0.25em] text-accent mb-4">
+                ▍Podrška
+              </div>
+              <h3 className="font-display text-4xl lg:text-5xl leading-[0.95] tracking-tight mb-6">
+                Podržite našu{" "}
+                <span className="italic font-light">borbu.</span>
+              </h3>
+              <p className="text-lg leading-relaxed text-background/80 max-w-xl text-pretty">
+                Svaka donacija pomaže da nastavimo pružanje besplatne pravne
+                pomoći, edukaciju roditelja i borbu za promenu zakona. Bez vas,
+                ne možemo dalje.
+              </p>
+            </div>
+            <div className="bg-background/10 backdrop-blur-sm border border-background/20 rounded-sm p-8 lg:p-10">
+              <div className="flex items-center gap-3 mb-6">
+                <span className="grid place-items-center h-10 w-10 rounded-full bg-accent text-background">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                 </span>
-              </a>
+                <div>
+                  <div className="font-display text-lg">Pokret Roditeljski Front</div>
+                  <div className="text-sm text-background/60">Donacije</div>
+                </div>
+              </div>
+              <div className="space-y-4">
+                <div>
+                  <div className="text-[10px] uppercase tracking-[0.2em] text-background/50 mb-1">
+                    Broj računa
+                  </div>
+                  <div className="font-mono text-xl lg:text-2xl tracking-wider">
+                    155-0000000995748-80
+                  </div>
+                </div>
+                <div className="pt-4 border-t border-background/20">
+                  <p className="text-sm italic text-background/70 leading-relaxed">
+                    „Hvala svima koji podržavaju borbu za našu decu i njihovo
+                    pravo na oba roditelja. Vaš Roditeljski Front."
+                  </p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  navigator.clipboard.writeText('155-0000000995748-80');
+                }}
+                className="mt-6 w-full inline-flex items-center justify-center gap-2 rounded-full bg-accent text-background py-3 text-sm font-medium hover:bg-accent/90 transition-colors"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Kopiraj broj računa
+              </button>
             </div>
           </div>
         </div>
