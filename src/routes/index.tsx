@@ -184,6 +184,53 @@ function Problem() {
           </div>
         </div>
 
+        <div className="mb-16 grid lg:grid-cols-12 gap-8 items-stretch">
+          <div className="lg:col-span-7 border border-border bg-card p-8 lg:p-10 relative overflow-hidden">
+            <div className="absolute -top-16 -right-16 h-48 w-48 rounded-full bg-accent/10 blur-3xl" />
+            <div className="text-xs uppercase tracking-[0.25em] text-accent mb-4">
+              ▍Osnivači
+            </div>
+            <h3 className="font-display text-3xl lg:text-4xl leading-tight mb-4 text-pretty">
+              Pokret je osnovan od strane{" "}
+              <span className="italic font-light">roditelja, za roditelje.</span>
+            </h3>
+            <p className="text-muted-foreground leading-relaxed text-pretty mb-6 max-w-2xl">
+              Roditeljski Front kao nevladina organizacija nastala je iz lične borbe i potrebe da se sistem promeni. Među osnivačima ove organizacije su:
+            </p>
+            <ul className="grid sm:grid-cols-2 gap-4">
+              {[
+                { name: "Nenad Pagonis", role: "Suosnivač" },
+                { name: "Dušan Kaljević", role: "Suosnivač" },
+              ].map((f) => (
+                <li key={f.name} className="flex items-center gap-4 border-t border-border pt-4">
+                  <span className="grid place-items-center h-12 w-12 rounded-full bg-foreground text-background font-display text-lg">
+                    {f.name.split(" ").map((p) => p[0]).join("")}
+                  </span>
+                  <div>
+                    <div className="font-display text-xl leading-tight">{f.name}</div>
+                    <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mt-1">{f.role}</div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="lg:col-span-5 bg-foreground text-background p-8 lg:p-10 relative overflow-hidden flex flex-col justify-between">
+            <div className="absolute -bottom-20 -right-20 h-56 w-56 rounded-full bg-accent/20 blur-3xl" />
+            <div className="relative">
+              <div className="text-xs uppercase tracking-[0.25em] text-accent mb-4">
+                ▍Naša misija
+              </div>
+              <p className="font-display text-2xl lg:text-3xl leading-snug text-pretty">
+                „Niko ko se bori za svoje dete ne sme da ostane sam pred sistemom."
+              </p>
+            </div>
+            <div className="relative mt-8">
+              <div className="h-px w-12 bg-accent" />
+              <div className="mt-4 text-sm text-background/70">Pokret Roditeljski Front · Srbija</div>
+            </div>
+          </div>
+        </div>
+
         <div className="grid lg:grid-cols-3 gap-px bg-border">
           {cards.map((c) => (
             <article
