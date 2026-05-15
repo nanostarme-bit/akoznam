@@ -47,7 +47,7 @@ function Home() {
 
 function Hero() {
   return (
-    <section id="pocetna" className="relative pt-16 overflow-hidden">
+    <section id="pocetna" className="relative pt-20 overflow-hidden">
       <div aria-hidden className="pointer-events-none absolute -top-24 -left-24 h-[28rem] w-[28rem] rounded-full bg-accent/15 blur-3xl float-slow" />
       <div aria-hidden className="pointer-events-none absolute top-40 -right-24 h-[24rem] w-[24rem] rounded-full bg-moss/15 blur-3xl float-slower" />
       <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10 pt-16 lg:pt-24 pb-20">
