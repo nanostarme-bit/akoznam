@@ -39,6 +39,7 @@ function Home() {
       <LegalTips />
       <Stats />
       <Goal />
+      <Events />
       <Testimonial />
       <CTA />
       <SiteFooter />
