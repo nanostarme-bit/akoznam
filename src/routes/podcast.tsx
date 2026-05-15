@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import heroImg from "@/assets/podcast-hero.jpg";
+import ytPreviewImg from "@/assets/youtube-channel-preview.jpg";
 
 export const Route = createFileRoute("/podcast")({
   head: () => ({
