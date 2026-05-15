@@ -3,6 +3,8 @@ import heroImg from "@/assets/hero-father-child.jpg";
 import familyImg from "@/assets/family-together.jpg";
 import justiceImg from "@/assets/justice-scale.jpg";
 import silhouetteImg from "@/assets/silhouette.jpg";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -24,67 +26,22 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const nav = [
-  { label: "Početna", href: "#pocetna" },
-  { label: "O Nama", href: "#o-nama" },
-  { label: "Naš Rad", href: "#nas-rad" },
-  { label: "Besplatna Pomoć", href: "#pomoc" },
-  { label: "Uključi Se", href: "#ukljuci" },
-];
-
 function Home() {
   return (
     <div className="grain min-h-screen overflow-x-clip bg-background text-foreground">
-      <Header />
+      <SiteHeader />
       <Hero />
       <Marquee />
       <Problem />
       <Manifest />
       <Work />
+      <LegalTips />
       <Stats />
       <Goal />
       <Testimonial />
       <CTA />
-      <Footer />
+      <SiteFooter />
     </div>
-  );
-}
-
-function Header() {
-  return (
-    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/70 border-b border-border/60">
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-10 h-16 flex items-center justify-between">
-        <a href="#pocetna" className="flex items-center gap-3 group">
-          <span className="grid place-items-center h-9 w-9 rounded-full bg-foreground text-background font-display italic text-lg font-semibold">
-            r
-          </span>
-          <span className="font-display text-lg tracking-tight">
-            Roditeljski<span className="text-accent">.</span>Front
-          </span>
-        </a>
-        <nav className="hidden lg:flex items-center gap-9 text-sm">
-          {nav.map((n) => (
-            <a
-              key={n.href}
-              href={n.href}
-              className="nav-link text-muted-foreground"
-            >
-              <span className="dot" />
-              {n.label}
-            </a>
-          ))}
-        </nav>
-        <a
-          href="#ukljuci"
-          className="glow-ring group inline-flex items-center gap-2 rounded-full bg-foreground text-background pl-5 pr-2 py-2 text-sm hover:bg-accent transition-colors"
-        >
-          Podrži Nas
-          <span className="grid place-items-center h-7 w-7 rounded-full bg-background text-foreground group-hover:rotate-45 transition-transform duration-500">
-            →
-          </span>
-        </a>
-      </div>
-    </header>
   );
 }
 
@@ -555,71 +512,107 @@ function CTA() {
   );
 }
 
-function Footer() {
+function LegalTips() {
+  const tips = [
+    {
+      n: "01",
+      law: "Porodični zakon RS · čl. 6, 60–61",
+      title: "Dete ima pravo na oba roditelja",
+      body:
+        "Zakon izričito kaže da dete ima pravo na održavanje ličnih odnosa sa roditeljem sa kojim ne živi. Onemogućavanje viđanja je kršenje prava deteta — ne samo roditelja. Tražite pismeno obrazloženje svakog odbijanja.",
+    },
+    {
+      n: "02",
+      law: "Zakon o izvršenju · čl. 367–375",
+      title: "Izvršenje viđanja je obavezno",
+      body:
+        "Ako druga strana ne poštuje sudsku odluku o viđanju, podnesite predlog za izvršenje. Sud može izreći novčane kazne (do 200.000 RSD po prekršaju) ili promeniti model staranja u korist roditelja koji ne opstruira.",
+    },
+    {
+      n: "03",
+      law: "Porodični zakon · čl. 75–77",
+      title: "Zajedničko vršenje roditeljskog prava",
+      body:
+        "Roditelji mogu sporazumno tražiti zajedničko vršenje roditeljskog prava. Sporazum se overava i podnosi sudu — ovo je najbrži i najjeftiniji put do pravičnog modela.",
+    },
+    {
+      n: "04",
+      law: "Praktičan savet",
+      title: "Dokumentujte sve — pisano i datumski",
+      body:
+        "Vodite dnevnik: svaki pokušaj viđanja, SMS, poziv, email. Snimci i poruke su validan dokaz na sudu. Bez dokumentacije, vaša priča je samo reč protiv reči.",
+    },
+    {
+      n: "05",
+      law: "Krivični zakonik · čl. 191",
+      title: "Oduzimanje maloletnog lica",
+      body:
+        "Zadržavanje deteta od strane jednog roditelja protivno sudskoj odluci je krivično delo — zaprećena kazna do 3 godine zatvora. Lažne prijave o nasilju takođe su krivično delo (čl. 334 KZ).",
+    },
+    {
+      n: "06",
+      law: "Besplatna pravna pomoć",
+      title: "Imate pravo na advokata bez naknade",
+      body:
+        "Zakon o besplatnoj pravnoj pomoći (2019) garantuje pristup advokatu građanima sa nižim primanjima. Prijava se podnosi opštini. Mi vam pomažemo da popunite zahtev i pronađete advokata u vašem gradu.",
+    },
+  ];
   return (
-    <footer className="border-t border-border bg-background">
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-10 py-16 grid lg:grid-cols-12 gap-10">
-        <div className="lg:col-span-5">
-          <div className="font-display text-3xl tracking-tight">
-            Roditeljski<span className="text-accent">.</span>Front
+    <section id="saveti" className="relative py-28 lg:py-36 bg-secondary border-y border-border">
+      <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
+        <div className="grid lg:grid-cols-12 gap-10 mb-16">
+          <div className="lg:col-span-5">
+            <div className="text-xs uppercase tracking-[0.25em] text-accent mb-4">
+              ▍Pravni saveti
+            </div>
+            <h2 className="font-display text-5xl lg:text-7xl leading-[0.95] tracking-tight">
+              Zakon je{" "}
+              <span className="italic font-light">na vašoj strani</span> —
+              naučite kako da ga koristite.
+            </h2>
           </div>
-          <p className="mt-4 max-w-sm text-sm text-muted-foreground leading-relaxed">
-            <strong className="text-foreground">Podržavamo oba roditelja</strong>
-            , ali se fokusiramo na pomoć očevima jer su oni najčešće žrtve
-            sistemske diskriminacije u porodičnim sporovima.
-          </p>
+          <div className="lg:col-span-6 lg:col-start-7 flex items-end">
+            <p className="text-lg leading-relaxed text-muted-foreground text-pretty">
+              Šest stvari koje svaki roditelj u Srbiji mora da zna pre nego što
+              uđe u sudnicu. Ovo nije zamena za advokata — već prva mapa kroz
+              sistem.
+            </p>
+          </div>
         </div>
-        <div className="lg:col-span-2">
-          <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-4">
-            Navigacija
-          </div>
-          <ul className="space-y-2 text-sm">
-            {nav.map((n) => (
-              <li key={n.href}>
-                <a href={n.href} className="hover:text-accent transition-colors">
-                  {n.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="lg:col-span-2">
-          <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-4">
-            Kontakt
-          </div>
-          <ul className="space-y-2 text-sm">
-            <li>pomoc@roditeljskifront.org</li>
-            <li>+381 11 000 000</li>
-            <li>Beograd, Srbija</li>
-          </ul>
-        </div>
-        <div className="lg:col-span-3">
-          <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-4">
-            Bilten
-          </div>
-          <form className="flex border-b border-foreground/40 pb-2">
-            <input
-              type="email"
-              placeholder="vaša@adresa.rs"
-              className="flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground"
-            />
-            <button
-              type="button"
-              className="text-sm hover:text-accent transition-colors"
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
+          {tips.map((t) => (
+            <article
+              key={t.n}
+              className="group bg-secondary p-8 lg:p-10 hover:bg-background transition-colors"
             >
-              →
-            </button>
-          </form>
+              <div className="flex items-start justify-between mb-8">
+                <span className="font-display text-5xl text-accent/80">{t.n}</span>
+                <span className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground text-right max-w-[12ch] leading-snug">
+                  {t.law}
+                </span>
+              </div>
+              <h3 className="font-display text-2xl mb-3 text-pretty">{t.title}</h3>
+              <p className="text-muted-foreground leading-relaxed text-pretty text-sm">
+                {t.body}
+              </p>
+            </article>
+          ))}
+        </div>
+
+        <div className="mt-12 flex flex-wrap items-center justify-between gap-4 text-sm">
+          <p className="text-muted-foreground italic max-w-2xl">
+            Napomena: Saveti su informativnog karaktera. Za konkretan slučaj
+            uvek konsultujte advokata — možemo vam pomoći da pronađete pravog.
+          </p>
+          <a
+            href="#pomoc"
+            className="inline-flex items-center gap-2 border-b border-foreground/40 pb-1 hover:border-accent hover:text-accent transition-colors"
+          >
+            Tražite besplatnu pomoć →
+          </a>
         </div>
       </div>
-      <div className="border-t border-border">
-        <div className="mx-auto max-w-[1400px] px-6 lg:px-10 py-6 flex flex-wrap items-center justify-between gap-4 text-xs text-muted-foreground">
-          <div>© {new Date().getFullYear()} Roditeljski Front. Sva prava zadržana.</div>
-          <div className="font-display italic">
-            „Otac nije posetilac. Otac je roditelj."
-          </div>
-        </div>
-      </div>
-    </footer>
+    </section>
   );
 }
