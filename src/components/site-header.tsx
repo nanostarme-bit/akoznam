@@ -5,6 +5,7 @@ export const nav = [
   { label: "Početna", href: "/#pocetna" },
   { label: "O Nama", href: "/#o-nama" },
   { label: "Naš Rad", href: "/#nas-rad" },
+  { label: "Pravna Pomoć", href: "/#pravna-pomoc" },
   { label: "Saveti", href: "/#saveti" },
   { label: "Podcast", to: "/podcast" as const },
   { label: "Pomoć", href: "/#pomoc" },
@@ -12,15 +13,15 @@ export const nav = [
 
 export function SiteHeader() {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/70 border-b border-border/60">
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-10 h-16 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-3 group">
+    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/85 border-b border-border/60 shadow-[0_1px_0_rgba(0,0,0,0.04)]">
+      <div className="mx-auto max-w-[1400px] px-6 lg:px-10 h-20 flex items-center justify-between">
+        <Link to="/" className="flex items-center gap-3 group" aria-label="Roditeljski Front — Početna">
           <img
             src={logo}
             alt="Roditeljski Front logo"
-            width={160}
-            height={48}
-            className="h-9 w-auto"
+            width={220}
+            height={64}
+            className="h-11 lg:h-12 w-auto drop-shadow-sm"
           />
         </Link>
         <nav className="hidden lg:flex items-center gap-8 text-sm">

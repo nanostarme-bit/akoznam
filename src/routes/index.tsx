@@ -35,6 +35,7 @@ function Home() {
       <Problem />
       <Manifest />
       <Work />
+      <LegalAid />
       <LegalTips />
       <Stats />
       <Goal />
@@ -47,7 +48,7 @@ function Home() {
 
 function Hero() {
   return (
-    <section id="pocetna" className="relative pt-16 overflow-hidden">
+    <section id="pocetna" className="relative pt-20 overflow-hidden">
       <div aria-hidden className="pointer-events-none absolute -top-24 -left-24 h-[28rem] w-[28rem] rounded-full bg-accent/15 blur-3xl float-slow" />
       <div aria-hidden className="pointer-events-none absolute top-40 -right-24 h-[24rem] w-[24rem] rounded-full bg-moss/15 blur-3xl float-slower" />
       <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10 pt-16 lg:pt-24 pb-20">
@@ -71,7 +72,7 @@ function Hero() {
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <a
-                href="#pomoc"
+                href="#pravna-pomoc"
                 className="group inline-flex items-center gap-3 rounded-full bg-foreground text-background pl-7 pr-3 py-3 text-sm font-medium hover:bg-accent transition-colors"
               >
                 Traži Pomoć
@@ -181,6 +182,53 @@ function Problem() {
               decom — ne zato što su loši roditelji, već zato što ih zakon i
               sistem ne štite.
             </p>
+          </div>
+        </div>
+
+        <div className="mb-16 grid lg:grid-cols-12 gap-8 items-stretch">
+          <div className="lg:col-span-7 border border-border bg-card p-8 lg:p-10 relative overflow-hidden">
+            <div className="absolute -top-16 -right-16 h-48 w-48 rounded-full bg-accent/10 blur-3xl" />
+            <div className="text-xs uppercase tracking-[0.25em] text-accent mb-4">
+              ▍Osnivači
+            </div>
+            <h3 className="font-display text-3xl lg:text-4xl leading-tight mb-4 text-pretty">
+              Pokret je osnovan od strane{" "}
+              <span className="italic font-light">roditelja, za roditelje.</span>
+            </h3>
+            <p className="text-muted-foreground leading-relaxed text-pretty mb-6 max-w-2xl">
+              Roditeljski Front kao nevladina organizacija nastala je iz lične borbe i potrebe da se sistem promeni. Među osnivačima ove organizacije su:
+            </p>
+            <ul className="grid sm:grid-cols-2 gap-4">
+              {[
+                { name: "Nenad Pagonis", role: "Suosnivač" },
+                { name: "Dušan Kaljević", role: "Suosnivač" },
+              ].map((f) => (
+                <li key={f.name} className="flex items-center gap-4 border-t border-border pt-4">
+                  <span className="grid place-items-center h-12 w-12 rounded-full bg-foreground text-background font-display text-lg">
+                    {f.name.split(" ").map((p) => p[0]).join("")}
+                  </span>
+                  <div>
+                    <div className="font-display text-xl leading-tight">{f.name}</div>
+                    <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mt-1">{f.role}</div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="lg:col-span-5 bg-foreground text-background p-8 lg:p-10 relative overflow-hidden flex flex-col justify-between">
+            <div className="absolute -bottom-20 -right-20 h-56 w-56 rounded-full bg-accent/20 blur-3xl" />
+            <div className="relative">
+              <div className="text-xs uppercase tracking-[0.25em] text-accent mb-4">
+                ▍Naša misija
+              </div>
+              <p className="font-display text-2xl lg:text-3xl leading-snug text-pretty">
+                „Niko ko se bori za svoje dete ne sme da ostane sam pred sistemom."
+              </p>
+            </div>
+            <div className="relative mt-8">
+              <div className="h-px w-12 bg-accent" />
+              <div className="mt-4 text-sm text-background/70">Pokret Roditeljski Front · Srbija</div>
+            </div>
           </div>
         </div>
 
@@ -663,6 +711,90 @@ function LegalTips() {
             Tražite besplatnu pomoć →
           </a>
         </div>
+      </div>
+    </section>
+  );
+}
+
+function LegalAid() {
+  const steps = [
+    {
+      n: "01",
+      title: "Pošaljite zahtev",
+      body: "Opišite ukratko svoju situaciju na pomoc@roditeljskifront.org ili nas pozovite. Sve informacije se čuvaju kao poverljive.",
+    },
+    {
+      n: "02",
+      title: "Razgovor sa koordinatorom",
+      body: "U roku od 72h dobijate poziv. Saslušaćemo vas bez naplate, bez osude — i procenimo šta je pravno moguće.",
+    },
+    {
+      n: "03",
+      title: "Povezivanje sa advokatom",
+      body: "Spajamo vas sa proverenim advokatima iz naše mreže koji rade pro bono ili po sniženoj tarifi za naše korisnike.",
+    },
+  ];
+  return (
+    <section id="pravna-pomoc" className="relative py-28 lg:py-36 bg-foreground text-background overflow-hidden">
+      <div aria-hidden className="pointer-events-none absolute -top-32 -left-32 h-[26rem] w-[26rem] rounded-full bg-accent/20 blur-3xl float-slow" />
+      <div aria-hidden className="pointer-events-none absolute bottom-0 right-0 h-[22rem] w-[22rem] rounded-full bg-moss/20 blur-3xl float-slower" />
+      <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10">
+        <div className="grid lg:grid-cols-12 gap-10 mb-16 items-end">
+          <div className="lg:col-span-7">
+            <div className="text-xs uppercase tracking-[0.25em] text-accent mb-4">
+              ▍Besplatna pravna pomoć
+            </div>
+            <h2 className="font-display text-5xl lg:text-7xl leading-[0.95] tracking-tight text-balance">
+              Advokat{" "}
+              <span className="italic font-light text-accent">bez naknade</span>{" "}
+              — kada vam je najpotrebniji.
+            </h2>
+          </div>
+          <div className="lg:col-span-5">
+            <p className="text-lg leading-relaxed text-background/80 text-pretty">
+              Mnogi roditelji odustaju od borbe jer nemaju novca za advokata. Mi
+              postojimo upravo zato. Naš tim i partnerska mreža advokata pružaju
+              besplatnu pravnu pomoć roditeljima u Srbiji — bez skrivenih troškova.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-px bg-background/15 mb-12">
+          {steps.map((s) => (
+            <div key={s.n} className="bg-foreground p-8 lg:p-10 relative">
+              <div className="font-display text-6xl text-accent/80 mb-8">{s.n}</div>
+              <h3 className="font-display text-2xl mb-3">{s.title}</h3>
+              <p className="text-background/70 leading-relaxed text-pretty text-sm">{s.body}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-px bg-background/15">
+          <a
+            href="mailto:pomoc@roditeljskifront.org"
+            className="group bg-foreground p-8 lg:p-10 flex items-center justify-between gap-6 hover:bg-accent transition-colors"
+          >
+            <div>
+              <div className="text-[10px] uppercase tracking-[0.25em] text-background/60 mb-2">E-mail</div>
+              <div className="font-display text-2xl lg:text-3xl">pomoc@roditeljskifront.org</div>
+            </div>
+            <span className="grid place-items-center h-12 w-12 rounded-full bg-background text-foreground group-hover:translate-x-1 transition-transform">→</span>
+          </a>
+          <div className="bg-foreground p-8 lg:p-10 flex items-center justify-between gap-6">
+            <div>
+              <div className="text-[10px] uppercase tracking-[0.25em] text-background/60 mb-2">Poverljivost</div>
+              <div className="font-display text-xl lg:text-2xl text-pretty">
+                Sve što nam kažete ostaje između vas i pravnog tima.
+              </div>
+            </div>
+            <span className="text-accent text-4xl">§</span>
+          </div>
+        </div>
+
+        <p className="mt-10 text-sm text-background/60 italic max-w-3xl">
+          Pomoć se pruža u skladu sa Zakonom o besplatnoj pravnoj pomoći (2019) i internim
+          kapacitetima organizacije. Prioritet imaju slučajevi onemogućavanja kontakta sa decom i hitne situacije.
+        </p>
       </div>
     </section>
   );
