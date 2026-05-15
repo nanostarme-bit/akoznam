@@ -62,23 +62,24 @@ function Header() {
             Roditeljski<span className="text-accent">.</span>Front
           </span>
         </a>
-        <nav className="hidden lg:flex items-center gap-8 text-sm">
+        <nav className="hidden lg:flex items-center gap-9 text-sm">
           {nav.map((n) => (
             <a
               key={n.href}
               href={n.href}
-              className="relative text-muted-foreground hover:text-foreground transition-colors after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-accent hover:after:w-full after:transition-all"
+              className="nav-link text-muted-foreground"
             >
+              <span className="dot" />
               {n.label}
             </a>
           ))}
         </nav>
         <a
           href="#ukljuci"
-          className="group inline-flex items-center gap-2 rounded-full bg-foreground text-background pl-5 pr-2 py-2 text-sm hover:bg-accent transition-colors"
+          className="glow-ring group inline-flex items-center gap-2 rounded-full bg-foreground text-background pl-5 pr-2 py-2 text-sm hover:bg-accent transition-colors"
         >
           Podrži Nas
-          <span className="grid place-items-center h-7 w-7 rounded-full bg-background text-foreground group-hover:rotate-45 transition-transform">
+          <span className="grid place-items-center h-7 w-7 rounded-full bg-background text-foreground group-hover:rotate-45 transition-transform duration-500">
             →
           </span>
         </a>
