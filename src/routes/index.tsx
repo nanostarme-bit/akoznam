@@ -35,6 +35,7 @@ function Home() {
       <Problem />
       <Manifest />
       <Work />
+      <LegalAid />
       <LegalTips />
       <Stats />
       <Goal />
