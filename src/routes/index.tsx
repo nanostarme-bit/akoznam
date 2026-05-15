@@ -90,16 +90,18 @@ function Header() {
 
 function Hero() {
   return (
-    <section id="pocetna" className="relative pt-16">
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-10 pt-16 lg:pt-24 pb-20">
+    <section id="pocetna" className="relative pt-16 overflow-hidden">
+      <div aria-hidden className="pointer-events-none absolute -top-24 -left-24 h-[28rem] w-[28rem] rounded-full bg-accent/15 blur-3xl float-slow" />
+      <div aria-hidden className="pointer-events-none absolute top-40 -right-24 h-[24rem] w-[24rem] rounded-full bg-moss/15 blur-3xl float-slower" />
+      <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10 pt-16 lg:pt-24 pb-20">
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-end">
           <div className="lg:col-span-7 reveal">
             <div className="flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-muted-foreground mb-8">
               <span className="h-px w-12 bg-foreground" />
-              Roditeljski Front · Beograd
+              Roditeljski Front · roditeljskifront.org
             </div>
             <h1 className="font-display text-[clamp(2.75rem,7vw,6.5rem)] leading-[0.95] tracking-[-0.03em] text-balance">
-              Pravo da budete{" "}
+              <span className="shimmer">Pravo da budete</span>{" "}
               <span className="italic font-light text-accent">roditelj</span>
               <br />
               ne sme zavisiti{" "}
