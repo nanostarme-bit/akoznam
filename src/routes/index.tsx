@@ -3,6 +3,8 @@ import heroImg from "@/assets/hero-father-child.jpg";
 import familyImg from "@/assets/family-together.jpg";
 import justiceImg from "@/assets/justice-scale.jpg";
 import silhouetteImg from "@/assets/silhouette.jpg";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 
 export const Route = createFileRoute("/")({
   head: () => ({
