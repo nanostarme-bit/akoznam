@@ -62,23 +62,24 @@ function Header() {
             Roditeljski<span className="text-accent">.</span>Front
           </span>
         </a>
-        <nav className="hidden lg:flex items-center gap-8 text-sm">
+        <nav className="hidden lg:flex items-center gap-9 text-sm">
           {nav.map((n) => (
             <a
               key={n.href}
               href={n.href}
-              className="relative text-muted-foreground hover:text-foreground transition-colors after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-accent hover:after:w-full after:transition-all"
+              className="nav-link text-muted-foreground"
             >
+              <span className="dot" />
               {n.label}
             </a>
           ))}
         </nav>
         <a
           href="#ukljuci"
-          className="group inline-flex items-center gap-2 rounded-full bg-foreground text-background pl-5 pr-2 py-2 text-sm hover:bg-accent transition-colors"
+          className="glow-ring group inline-flex items-center gap-2 rounded-full bg-foreground text-background pl-5 pr-2 py-2 text-sm hover:bg-accent transition-colors"
         >
           Podrži Nas
-          <span className="grid place-items-center h-7 w-7 rounded-full bg-background text-foreground group-hover:rotate-45 transition-transform">
+          <span className="grid place-items-center h-7 w-7 rounded-full bg-background text-foreground group-hover:rotate-45 transition-transform duration-500">
             →
           </span>
         </a>
@@ -89,16 +90,18 @@ function Header() {
 
 function Hero() {
   return (
-    <section id="pocetna" className="relative pt-16">
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-10 pt-16 lg:pt-24 pb-20">
+    <section id="pocetna" className="relative pt-16 overflow-hidden">
+      <div aria-hidden className="pointer-events-none absolute -top-24 -left-24 h-[28rem] w-[28rem] rounded-full bg-accent/15 blur-3xl float-slow" />
+      <div aria-hidden className="pointer-events-none absolute top-40 -right-24 h-[24rem] w-[24rem] rounded-full bg-moss/15 blur-3xl float-slower" />
+      <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10 pt-16 lg:pt-24 pb-20">
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-end">
           <div className="lg:col-span-7 reveal">
             <div className="flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-muted-foreground mb-8">
               <span className="h-px w-12 bg-foreground" />
-              Roditeljski Front · Beograd
+              Roditeljski Front · roditeljskifront.org
             </div>
             <h1 className="font-display text-[clamp(2.75rem,7vw,6.5rem)] leading-[0.95] tracking-[-0.03em] text-balance">
-              Pravo da budete{" "}
+              <span className="shimmer">Pravo da budete</span>{" "}
               <span className="italic font-light text-accent">roditelj</span>
               <br />
               ne sme zavisiti{" "}
@@ -527,7 +530,7 @@ function CTA() {
             </p>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
               <a
-                href="mailto:pomoc@roditeljskifront.rs"
+                href="mailto:pomoc@roditeljskifront.org"
                 className="group inline-flex items-center gap-3 rounded-full bg-foreground text-background pl-7 pr-3 py-3 text-sm font-medium hover:bg-accent transition-colors"
               >
                 Kontaktiraj Nas
@@ -585,7 +588,7 @@ function Footer() {
             Kontakt
           </div>
           <ul className="space-y-2 text-sm">
-            <li>pomoc@roditeljskifront.rs</li>
+            <li>pomoc@roditeljskifront.org</li>
             <li>+381 11 000 000</li>
             <li>Beograd, Srbija</li>
           </ul>
