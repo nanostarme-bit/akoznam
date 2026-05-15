@@ -5,6 +5,7 @@ export const nav = [
   { label: "Početna", href: "/#pocetna" },
   { label: "O Nama", href: "/#o-nama" },
   { label: "Naš Rad", href: "/#nas-rad" },
+  { label: "Pravna Pomoć", href: "/#pravna-pomoc" },
   { label: "Saveti", href: "/#saveti" },
   { label: "Podcast", to: "/podcast" as const },
   { label: "Pomoć", href: "/#pomoc" },
