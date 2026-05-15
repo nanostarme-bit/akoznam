@@ -530,7 +530,7 @@ function CTA() {
             </p>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
               <a
-                href="mailto:pomoc@roditeljskifront.rs"
+                href="mailto:pomoc@roditeljskifront.org"
                 className="group inline-flex items-center gap-3 rounded-full bg-foreground text-background pl-7 pr-3 py-3 text-sm font-medium hover:bg-accent transition-colors"
               >
                 Kontaktiraj Nas
@@ -588,7 +588,7 @@ function Footer() {
             Kontakt
           </div>
           <ul className="space-y-2 text-sm">
-            <li>pomoc@roditeljskifront.rs</li>
+            <li>pomoc@roditeljskifront.org</li>
             <li>+381 11 000 000</li>
             <li>Beograd, Srbija</li>
           </ul>
