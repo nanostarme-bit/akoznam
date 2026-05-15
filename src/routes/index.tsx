@@ -72,7 +72,7 @@ function Hero() {
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <a
-                href="#pomoc"
+                href="#pravna-pomoc"
                 className="group inline-flex items-center gap-3 rounded-full bg-foreground text-background pl-7 pr-3 py-3 text-sm font-medium hover:bg-accent transition-colors"
               >
                 Traži Pomoć
