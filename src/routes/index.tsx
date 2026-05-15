@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import heroImg from "@/assets/hero-father-child.jpg";
 import familyImg from "@/assets/family-together.jpg";
 import justiceImg from "@/assets/justice-scale.jpg";
@@ -39,6 +40,7 @@ function Home() {
       <LegalTips />
       <Stats />
       <Goal />
+      <Events />
       <Testimonial />
       <CTA />
       <SiteFooter />
@@ -797,5 +799,249 @@ function LegalAid() {
         </p>
       </div>
     </section>
+  );
+}
+
+const UPCOMING_EVENTS = [
+  {
+    id: "bg-2026-06-15",
+    title: "Protest za prava roditelja",
+    date: "15. jun 2026.",
+    time: "12:00h",
+    city: "Beograd",
+    location: "Trg Republike",
+    body: "Mirno okupljanje očeva, majki i porodica koje traže izmenu Porodičnog zakona i pravo deteta na oba roditelja. Donesite transparente, dovedite prijatelje.",
+    tag: "Protest",
+  },
+  {
+    id: "ns-2026-07-05",
+    title: "Tribina: Zajedničko starateljstvo",
+    date: "5. jul 2026.",
+    time: "18:00h",
+    city: "Novi Sad",
+    location: "Kulturni centar — biće potvrđeno",
+    body: "Otvorena tribina sa advokatima i roditeljima koji su prošli kroz proces. Pitanja i odgovori, pravni saveti uživo.",
+    tag: "Tribina",
+  },
+];
+
+function Events() {
+  const [openId, setOpenId] = useState<string | null>(null);
+  const active = UPCOMING_EVENTS.find((e) => e.id === openId) ?? null;
+  return (
+    <section id="dogadjaji" className="relative py-28 lg:py-36 bg-secondary border-y border-border">
+      <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
+        <div className="grid lg:grid-cols-12 gap-10 mb-16 items-end">
+          <div className="lg:col-span-7">
+            <div className="text-xs uppercase tracking-[0.25em] text-accent mb-4">
+              ▍Događaji
+            </div>
+            <h2 className="font-display text-5xl lg:text-7xl leading-[0.95] tracking-tight text-balance">
+              Vidimo se{" "}
+              <span className="italic font-light">na ulici.</span>
+            </h2>
+          </div>
+          <div className="lg:col-span-5">
+            <p className="text-lg leading-relaxed text-muted-foreground text-pretty">
+              Protesti, tribine i skupovi podrške širom Srbije. Prijavite se da
+              znamo koliko vas dolazi — i da vas obavestimo o svakoj promeni.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          {UPCOMING_EVENTS.map((ev) => (
+            <article
+              key={ev.id}
+              className="group relative border border-border bg-background p-8 lg:p-10 hover:-translate-y-1 transition-transform"
+            >
+              <div className="flex items-start justify-between mb-8">
+                <div className="flex items-baseline gap-3">
+                  <span className="font-display text-5xl text-accent">
+                    {ev.date.split(".")[0].trim()}
+                  </span>
+                  <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground">
+                    <div>{ev.date.split(" ").slice(1).join(" ")}</div>
+                    <div className="mt-1">{ev.time}</div>
+                  </div>
+                </div>
+                <span className="text-[10px] uppercase tracking-[0.25em] bg-foreground text-background px-3 py-1 rounded-full">
+                  {ev.tag}
+                </span>
+              </div>
+              <h3 className="font-display text-3xl mb-3 text-pretty">{ev.title}</h3>
+              <div className="text-sm text-muted-foreground mb-4 flex flex-wrap gap-x-4 gap-y-1">
+                <span>📍 {ev.city}</span>
+                <span>· {ev.location}</span>
+              </div>
+              <p className="text-muted-foreground leading-relaxed text-pretty text-sm mb-8">
+                {ev.body}
+              </p>
+              <button
+                type="button"
+                onClick={() => setOpenId(ev.id)}
+                className="group/btn inline-flex items-center gap-3 rounded-full bg-foreground text-background pl-6 pr-2 py-2 text-sm font-medium hover:bg-accent transition-colors"
+              >
+                Prijavi se
+                <span className="grid place-items-center h-7 w-7 rounded-full bg-background text-foreground group-hover/btn:translate-x-0.5 transition-transform">
+                  →
+                </span>
+              </button>
+            </article>
+          ))}
+        </div>
+
+        <p className="mt-10 text-sm text-muted-foreground italic">
+          Imate ideju za skup u vašem gradu? Pišite nam na{" "}
+          <a className="underline hover:text-accent" href="mailto:pomoc@roditeljskifront.org">
+            pomoc@roditeljskifront.org
+          </a>
+          .
+        </p>
+      </div>
+
+      {active && <EventDialog event={active} onClose={() => setOpenId(null)} />}
+    </section>
+  );
+}
+
+function EventDialog({
+  event,
+  onClose,
+}: {
+  event: (typeof UPCOMING_EVENTS)[number];
+  onClose: () => void;
+}) {
+  const [form, setForm] = useState({ name: "", email: "", phone: "", city: "", count: "1" });
+  const [error, setError] = useState<string | null>(null);
+  const [sent, setSent] = useState(false);
+
+  const update = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm((f) => ({ ...f, [k]: e.target.value.slice(0, 200) }));
+  };
+
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const name = form.name.trim();
+    const email = form.email.trim();
+    const phone = form.phone.trim();
+    const city = form.city.trim();
+    const count = Number(form.count);
+    if (name.length < 2) return setError("Unesite ime i prezime.");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return setError("Unesite ispravan e-mail.");
+    if (phone.length > 0 && phone.length < 6) return setError("Telefon je prekratak.");
+    if (!Number.isFinite(count) || count < 1 || count > 50) return setError("Broj učesnika 1–50.");
+    setError(null);
+
+    const subject = `Prijava: ${event.title} (${event.city}, ${event.date})`;
+    const lines = [
+      `Događaj: ${event.title}`,
+      `Datum: ${event.date} ${event.time}`,
+      `Grad: ${event.city} — ${event.location}`,
+      "",
+      `Ime i prezime: ${name}`,
+      `E-mail: ${email}`,
+      `Telefon: ${phone || "—"}`,
+      `Grad polaska: ${city || "—"}`,
+      `Broj učesnika: ${count}`,
+    ];
+    const href = `mailto:pomoc@roditeljskifront.org?subject=${encodeURIComponent(
+      subject,
+    )}&body=${encodeURIComponent(lines.join("\n"))}`;
+    window.location.href = href;
+    setSent(true);
+  };
+
+  return (
+    <div
+      className="fixed inset-0 z-[100] grid place-items-center bg-foreground/60 backdrop-blur-sm p-4"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+    >
+      <div
+        className="relative w-full max-w-lg bg-background border border-border rounded-sm shadow-2xl p-8 lg:p-10"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Zatvori"
+          className="absolute top-4 right-4 h-9 w-9 grid place-items-center rounded-full hover:bg-secondary transition-colors text-lg"
+        >
+          ✕
+        </button>
+        <div className="text-xs uppercase tracking-[0.25em] text-accent mb-2">
+          ▍Prijava
+        </div>
+        <h3 className="font-display text-3xl leading-tight text-pretty mb-1">
+          {event.title}
+        </h3>
+        <p className="text-sm text-muted-foreground mb-6">
+          {event.date} · {event.time} · {event.city}
+        </p>
+
+        {sent ? (
+          <div className="space-y-4">
+            <p className="text-base leading-relaxed">
+              Hvala! Otvorili smo vaš mail klijent sa popunjenom prijavom — samo
+              kliknite <em>Pošalji</em>. Vidimo se na skupu.
+            </p>
+            <button
+              type="button"
+              onClick={onClose}
+              className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-5 py-2 text-sm font-medium hover:bg-accent transition-colors"
+            >
+              Zatvori
+            </button>
+          </div>
+        ) : (
+          <form onSubmit={onSubmit} className="space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <Field label="Ime i prezime *" value={form.name} onChange={update("name")} required maxLength={100} />
+              <Field label="E-mail *" type="email" value={form.email} onChange={update("email")} required maxLength={150} />
+              <Field label="Telefon" type="tel" value={form.phone} onChange={update("phone")} maxLength={30} />
+              <Field label="Grad polaska" value={form.city} onChange={update("city")} maxLength={80} />
+            </div>
+            <Field label="Broj učesnika" type="number" value={form.count} onChange={update("count")} maxLength={3} />
+
+            {error && (
+              <p className="text-sm text-destructive">{error}</p>
+            )}
+
+            <button
+              type="submit"
+              className="group inline-flex items-center gap-3 rounded-full bg-foreground text-background pl-6 pr-2 py-3 text-sm font-medium hover:bg-accent transition-colors"
+            >
+              Pošalji prijavu
+              <span className="grid place-items-center h-8 w-8 rounded-full bg-background text-foreground group-hover:translate-x-0.5 transition-transform">
+                →
+              </span>
+            </button>
+            <p className="text-xs text-muted-foreground">
+              Prijava se šalje na pomoc@roditeljskifront.org. Vaši podaci se
+              koriste isključivo za organizaciju skupa.
+            </p>
+          </form>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function Field({
+  label,
+  ...props
+}: React.InputHTMLAttributes<HTMLInputElement> & { label: string }) {
+  return (
+    <label className="block">
+      <span className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+        {label}
+      </span>
+      <input
+        {...props}
+        className="mt-2 w-full bg-secondary border border-border rounded-sm px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+      />
+    </label>
   );
 }
