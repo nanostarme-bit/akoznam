@@ -26,67 +26,22 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const nav = [
-  { label: "Početna", href: "#pocetna" },
-  { label: "O Nama", href: "#o-nama" },
-  { label: "Naš Rad", href: "#nas-rad" },
-  { label: "Besplatna Pomoć", href: "#pomoc" },
-  { label: "Uključi Se", href: "#ukljuci" },
-];
-
 function Home() {
   return (
     <div className="grain min-h-screen overflow-x-clip bg-background text-foreground">
-      <Header />
+      <SiteHeader />
       <Hero />
       <Marquee />
       <Problem />
       <Manifest />
       <Work />
+      <LegalTips />
       <Stats />
       <Goal />
       <Testimonial />
       <CTA />
-      <Footer />
+      <SiteFooter />
     </div>
-  );
-}
-
-function Header() {
-  return (
-    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/70 border-b border-border/60">
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-10 h-16 flex items-center justify-between">
-        <a href="#pocetna" className="flex items-center gap-3 group">
-          <span className="grid place-items-center h-9 w-9 rounded-full bg-foreground text-background font-display italic text-lg font-semibold">
-            r
-          </span>
-          <span className="font-display text-lg tracking-tight">
-            Roditeljski<span className="text-accent">.</span>Front
-          </span>
-        </a>
-        <nav className="hidden lg:flex items-center gap-9 text-sm">
-          {nav.map((n) => (
-            <a
-              key={n.href}
-              href={n.href}
-              className="nav-link text-muted-foreground"
-            >
-              <span className="dot" />
-              {n.label}
-            </a>
-          ))}
-        </nav>
-        <a
-          href="#ukljuci"
-          className="glow-ring group inline-flex items-center gap-2 rounded-full bg-foreground text-background pl-5 pr-2 py-2 text-sm hover:bg-accent transition-colors"
-        >
-          Podrži Nas
-          <span className="grid place-items-center h-7 w-7 rounded-full bg-background text-foreground group-hover:rotate-45 transition-transform duration-500">
-            →
-          </span>
-        </a>
-      </div>
-    </header>
   );
 }
 
