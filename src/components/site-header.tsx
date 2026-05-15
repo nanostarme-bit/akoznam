@@ -7,6 +7,7 @@ export const nav = [
   { label: "Naš Rad", href: "/#nas-rad" },
   { label: "Pravna Pomoć", href: "/#pravna-pomoc" },
   { label: "Saveti", href: "/#saveti" },
+  { label: "Događaji", href: "/#dogadjaji" },
   { label: "Podcast", to: "/podcast" as const },
   { label: "Pomoć", href: "/#pomoc" },
 ];
