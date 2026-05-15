@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import heroImg from "@/assets/podcast-hero.jpg";
+import ytPreviewImg from "@/assets/youtube-channel-preview.jpg";
 
 export const Route = createFileRoute("/podcast")({
   head: () => ({
@@ -133,30 +134,33 @@ function PodcastPage() {
             </div>
           </div>
 
-          <div className="relative aspect-video overflow-hidden border border-border bg-foreground">
-            <iframe
-              src={YT_EMBED}
-              title="Zabranjeni Roditelj — YouTube kanal"
+          <a
+            href={YT_CHANNEL}
+            target="_blank"
+            rel="noreferrer"
+            className="group relative aspect-video overflow-hidden border border-border bg-foreground block"
+          >
+            <img
+              src={ytPreviewImg}
+              alt="Zabranjeni Roditelj — YouTube kanal"
               loading="lazy"
-              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="absolute inset-0 h-full w-full"
+              width={1600}
+              height={900}
+              className="h-full w-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-500"
             />
-          </div>
-
-          <div className="mt-6 flex flex-wrap items-center justify-between gap-4 text-sm text-muted-foreground">
-            <span>
-              Kanal: <span className="text-foreground">@zabranjeniroditelj</span>
-            </span>
-            <a
-              href={YT_CHANNEL}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 border-b border-foreground/40 pb-1 hover:border-accent hover:text-accent transition-colors"
-            >
-              Pretplati se na kanal →
-            </a>
-          </div>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="grid place-items-center h-16 w-16 rounded-full bg-accent/90 text-background group-hover:scale-110 transition-transform duration-300">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-foreground/80 to-transparent p-4">
+              <div className="flex items-center gap-2 text-sm text-background">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2s-.2-1.4-.8-2c-.8-.8-1.6-.8-2-.9C15.9 4 12 4 12 4s-3.9 0-6.8.3c-.4.1-1.2.1-2 .9-.6.6-.8 2-.8 2S2.2 8.8 2.2 10.4v1.5c0 1.6.2 3.2.2 3.2s.2 1.4.8 2c.8.8 1.8.8 2.3.9 1.7.2 6.5.3 6.5.3s3.9 0 6.8-.3c.4-.1 1.2-.1 2-.9.6-.6.8-2 .8-2s.2-1.6.2-3.2v-1.5c0-1.6-.2-3.2-.2-3.2zM10 14.5v-5l5 2.5-5 2.5z"/></svg>
+                <span className="font-medium">@zabranjeniroditelj</span>
+                <span className="opacity-70">— Kliknite da posetite kanal</span>
+              </div>
+            </div>
+          </a>
         </div>
       </section>
 
