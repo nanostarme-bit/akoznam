@@ -4,12 +4,47 @@
 //     componentTagger (dev-only), VITE_* env injection, @ path alias, React/TanStack dedupe,
 //     error logger plugins, and sandbox detection (port/host/strictPort).
 // You can pass additional config via defineConfig({ vite: { ... } }) if needed.
+
+// Polyfill for environments where process.stdin.off is missing (fixes Vite preview-server teardown)
+if (typeof process !== "undefined" && process.stdin && !(process.stdin as any).off) {
+  (process.stdin as any).off = function () {
+    return this;
+  };
+}
+
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import type { Plugin } from "vite";
+
+/** Vite plugin that writes an additional server.js entry in the SSR output so
+ *  TanStack Start's prerender preview server can find the expected entry file. */
+const fixServerEntryPlugin = (): Plugin => ({
+  name: "fix-server-entry",
+  generateBundle(_options, bundle) {
+    const b = bundle as Record<string, { fileName?: string; isEntry?: boolean }>;
+    if (b["index.js"]) {
+      this.emitFile({
+        type: "asset",
+        fileName: "server.js",
+        source: `export { default } from "./index.js";\n`,
+      });
+    }
+  },
+});
 
 // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
 // @cloudflare/vite-plugin builds from this — wrangler.jsonc main alone is insufficient.
 export default defineConfig({
   tanstackStart: {
     server: { entry: "server" },
+    prerender: {
+      routes: ["/", "/podcast"],
+      enabled: true,
+    },
+  },
+  vite: {
+    build: {
+      outDir: "dist",
+    },
+    plugins: [fixServerEntryPlugin()],
   },
 });
