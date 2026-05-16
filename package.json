@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "node scripts/build-static.js",
+    "build": "node scripts/build-static.cjs",
     "build:raw": "vite build",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
