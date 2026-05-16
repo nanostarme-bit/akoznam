@@ -40,6 +40,7 @@ function Home() {
       <LegalTips />
       <Stats />
       <Goal />
+      <WorldExample />
       <Events />
       <Testimonial />
       <CTA />
