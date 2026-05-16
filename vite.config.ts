@@ -4,6 +4,14 @@
 //     componentTagger (dev-only), VITE_* env injection, @ path alias, React/TanStack dedupe,
 //     error logger plugins, and sandbox detection (port/host/strictPort).
 // You can pass additional config via defineConfig({ vite: { ... } }) if needed.
+
+// Polyfill for environments where process.stdin.off is missing (fixes Vite preview-server teardown)
+if (typeof process !== "undefined" && process.stdin && !(process.stdin as any).off) {
+  (process.stdin as any).off = function () {
+    return this;
+  };
+}
+
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 import type { Plugin } from "vite";
 
