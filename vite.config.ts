@@ -5,14 +5,15 @@
 //     error logger plugins, and sandbox detection (port/host/strictPort).
 // You can pass additional config via defineConfig({ vite: { ... } }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
-import type { Plugin, OutputBundle } from "vite";
+import type { Plugin } from "vite";
 
 /** Vite plugin that writes an additional server.js entry in the SSR output so
  *  TanStack Start's prerender preview server can find the expected entry file. */
 const fixServerEntryPlugin = (): Plugin => ({
   name: "fix-server-entry",
-  generateBundle(_options, bundle: OutputBundle) {
-    if (bundle["index.js"]) {
+  generateBundle(_options, bundle) {
+    const b = bundle as Record<string, { fileName?: string; isEntry?: boolean }>;
+    if (b["index.js"]) {
       this.emitFile({
         type: "asset",
         fileName: "server.js",
