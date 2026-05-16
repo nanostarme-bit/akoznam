@@ -16,7 +16,9 @@ export default defineConfig({
       enabled: true,
     },
   },
-  build: {
-    outDir: "dist",
+  vite: {
+    build: {
+      outDir: "dist",
+    },
   },
 });
