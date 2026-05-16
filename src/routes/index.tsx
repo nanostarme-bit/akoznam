@@ -476,6 +476,111 @@ function Goal() {
   );
 }
 
+function WorldExample() {
+  const countries = [
+    {
+      flag: "SE",
+      name: "Švedska",
+      since: "1998.",
+      body: "Zajedničko starateljstvo je zakonito pravilo od 1998. godine. Dete ima pravo na oba roditelja kao osnovnu pretpostavku — sud dodeljuje isključivo starateljstvo samo u izuzetnim slučajevima.",
+    },
+    {
+      flag: "DK",
+      name: "Danska",
+      since: "2007.",
+      body: "Zajedničko roditeljsko pravo je podrazumevano nakon razvoda. Sud ga može poništiti samo ako postoje ozbiljni razlozi za to. Deca imaju aktivno pravo glasa od 10. godine.",
+    },
+    {
+      flag: "BE",
+      name: "Belgija",
+      since: "2006.",
+      body: "Porodični zakon iz 2006. zamenio je pojam 'starateljstvo' sa 'roditeljsko pravo', ravnopravno između majke i oca. Pravilo je 50/50 zajedničko vršenje prava.",
+    },
+    {
+      flag: "NL",
+      name: "Holandija",
+      since: "2009.",
+      body: "Zakon o roditeljskom planu od 2009. zahteva od roditelja da postignu dogovor o rasporedu viđanja. Sud daje prednost modelima koji održavaju odnos sa oba roditelja.",
+    },
+    {
+      flag: "DE",
+      name: "Nemačka",
+      since: "1997.",
+      body: "Zajedničko roditeljsko pravo je zakonita pretpostavka i nakon razvoda. Dete ima pravo na kontakt sa oba roditelja — onemogućavanje viđanja je pravno kažnjivo.",
+    },
+    {
+      flag: "AT",
+      name: "Austrija",
+      since: "2013.",
+      body: "Zajedničko starateljstvo postalo je pravilo nakon razvoda od 2013. Zakonom je ukinuto automatsko dodeljivanje starateljstva majci. Model je ravnoteža, a ne pobeda jedne strane.",
+    },
+  ];
+  return (
+    <section id="svetski-uzor" className="relative py-28 lg:py-36 bg-foreground text-background overflow-hidden">
+      <div aria-hidden className="pointer-events-none absolute -top-32 -right-32 h-[28rem] w-[28rem] rounded-full bg-accent/15 blur-3xl float-slow" />
+      <div aria-hidden className="pointer-events-none absolute bottom-0 left-0 h-[24rem] w-[24rem] rounded-full bg-moss/15 blur-3xl float-slower" />
+      <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10">
+        <div className="grid lg:grid-cols-12 gap-10 mb-16 items-end">
+          <div className="lg:col-span-7">
+            <div className="text-xs uppercase tracking-[0.25em] text-accent mb-4">
+              ▍Svetski uzor
+            </div>
+            <h2 className="font-display text-5xl lg:text-7xl leading-[0.95] tracking-tight text-balance">
+              Zakon mora da se{" "}
+              <span className="italic font-light text-accent">promeni</span> — i
+              da se uklopi sa standardima velikih zemalja.
+            </h2>
+          </div>
+          <div className="lg:col-span-5">
+            <p className="text-lg leading-relaxed text-background/80 text-pretty">
+              U zemljama zapadne Evrope, deca razvedenih roditelja ne gube jednog
+              roditelja po automatizmu. Zajedničko starateljstvo je pravilo, a ne
+              izuzetak. Srbija mora da sledi taj primer.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-background/15">
+          {countries.map((c) => (
+            <article
+              key={c.flag}
+              className="group bg-foreground p-8 lg:p-10 relative hover:bg-background/10 transition-colors"
+            >
+              <div className="flex items-start justify-between mb-8">
+                <span className="font-display text-4xl text-accent">
+                  {c.flag}
+                </span>
+                <span className="text-[10px] uppercase tracking-[0.25em] text-background/50">
+                  Zakon od {c.since}
+                </span>
+              </div>
+              <h3 className="font-display text-2xl lg:text-3xl mb-4">{c.name}</h3>
+              <p className="text-background/70 leading-relaxed text-pretty text-sm">
+                {c.body}
+              </p>
+            </article>
+          ))}
+        </div>
+
+        <div className="mt-12 border-t border-background/20 pt-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          <p className="text-background/60 italic text-sm max-w-2xl leading-relaxed">
+            Izvori: zvanične baze podataka porodičnog prava Evropske unije,
+            nacionalni zakonodavni akti (Švedska — Föräldrabalken, Danska — Lov om
+            forældremyndighed, Belgija — Code civil, Holandija — Wet bevordering
+            voortgezette ouderschap, Nemačka — BGB, Austrija — EheG).
+          </p>
+          <a
+            href="#pomoc"
+            className="inline-flex items-center gap-2 text-sm border-b border-background/40 pb-1 hover:border-accent hover:text-accent transition-colors shrink-0"
+          >
+            Pridruži se borbi za promenu →
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Testimonial() {
   return (
     <section className="relative py-28 lg:py-36 bg-foreground text-background overflow-hidden">
