@@ -19,13 +19,6 @@ export default defineConfig({
   vite: {
     build: {
       outDir: "dist",
-      ssr: {
-        rollupOptions: {
-          output: {
-            entryFileNames: "server.js",
-          },
-        },
-      },
     },
   },
 });
