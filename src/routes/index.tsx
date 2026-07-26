@@ -155,7 +155,35 @@ function Marquee() {
   );
 }
 
+const TEAM_MEMBERS = [
+  {
+    name: "Nenad Pagonis",
+    role: "Suosnivač",
+    bio: null
+  },
+  {
+    name: "Dušan Kaljević",
+    role: "Suosnivač",
+    bio: null
+  },
+  {
+    name: "Lazar Sekulić",
+    role: "Programer i osnivač web platforme",
+    bio: {
+      intro: "Iskusni tehnološki ekspert i posvećeni otac koji svoje inženjersko znanje usmerava ka društvenom aktivizmu i borbi za ravnopravnost. Kroz platformu Roditeljski Front, Lazar spaja tehnološke inovacije sa borbom za osnovna ljudska i roditeljska prava.",
+      experience: [
+        { title: "Liderstvo na američkom tržištu", desc: "Tokom deset godina rada u SAD za vrhunske kompanije, Lazar je odigrao presudnu ulogu u razvoju UHS-hardware.com, koji je postao lider u industriji bravarske opreme." },
+        { title: "Osnivač Nanostar studija", desc: "Modernu IT agenciju za razvoj digitalnih proizvoda sa Next.js, React-a, Vercel i Cloudflare." }
+      ],
+      expertise: ["AWS Cloud inženjering", "Razvoj web i mobilnih aplikacija", "Optimizacija digitalnog prisustva"],
+      closing: "Svoje iskustvo koristi kako bi Roditeljski Front imao stabilnu platformu koja donosi stvarne promene."
+    }
+  },
+];
+
 function Problem() {
+  const [selectedMember, setSelectedMember] = useState<typeof TEAM_MEMBERS[0] | null>(null);
+
   const cards = [
     {
       n: "01",
@@ -209,17 +237,19 @@ function Problem() {
               Roditeljski Front kao nevladina organizacija nastala je iz lične borbe i potrebe da se sistem promeni. Među osnivačima ove organizacije su:
             </p>
             <ul className="grid sm:grid-cols-2 gap-4">
-              {[
-                { name: "Nenad Pagonis", role: "Suosnivač" },
-                { name: "Dušan Kaljević", role: "Suosnivač" },
-              ].map((f) => (
-                <li key={f.name} className="flex items-center gap-4 border-t border-border pt-4">
-                  <span className="grid place-items-center h-12 w-12 rounded-full bg-foreground text-background font-display text-lg">
+              {TEAM_MEMBERS.map((f) => (
+                <li
+                  key={f.name}
+                  onClick={() => f.bio && setSelectedMember(f)}
+                  className={`flex items-center gap-4 border-t border-border pt-4 ${f.bio ? "cursor-pointer hover:opacity-70 transition-opacity" : ""}`}
+                >
+                  <span className="grid place-items-center h-12 w-12 rounded-full bg-foreground text-background font-display text-lg shrink-0">
                     {f.name.split(" ").map((p) => p[0]).join("")}
                   </span>
                   <div>
                     <div className="font-display text-xl leading-tight">{f.name}</div>
                     <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mt-1">{f.role}</div>
+                    {f.bio && <div className="text-xs text-accent mt-1">Klikni za više →</div>}
                   </div>
                 </li>
               ))}
@@ -264,7 +294,89 @@ function Problem() {
           ))}
         </div>
       </div>
+
+      {selectedMember?.bio && (
+        <TeamMemberModal member={selectedMember} onClose={() => setSelectedMember(null)} />
+      )}
     </section>
+  );
+}
+
+function TeamMemberModal({ member, onClose }: { member: typeof TEAM_MEMBERS[0]; onClose: () => void }) {
+  if (!member.bio) return null;
+  return (
+    <div
+      className="fixed inset-0 z-[100] grid place-items-center bg-foreground/60 backdrop-blur-sm p-4 overflow-y-auto"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="member-title"
+    >
+      <div
+        className="relative w-full max-w-2xl bg-background border border-border rounded-sm shadow-2xl p-6 sm:p-8 lg:p-10 my-4"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Zatvori"
+          className="absolute top-4 right-4 h-9 w-9 grid place-items-center rounded-full hover:bg-secondary transition-colors text-lg"
+        >
+          ✕
+        </button>
+
+        <div className="flex items-center gap-4 mb-6">
+          <span className="grid place-items-center h-16 w-16 rounded-full bg-foreground text-background font-display text-2xl shrink-0">
+            {member.name.split(" ").map((p) => p[0]).join("")}
+          </span>
+          <div>
+            <h2 id="member-title" className="font-display text-3xl leading-tight">{member.name}</h2>
+            <p className="text-sm text-accent mt-1">{member.role}</p>
+          </div>
+        </div>
+
+        <div className="prose prose-sm max-w-none text-foreground space-y-4">
+          <p className="text-muted-foreground leading-relaxed">{member.bio.intro}</p>
+
+          {member.bio.experience.length > 0 && (
+            <div>
+              <h3 className="font-display text-lg mb-3">Profesionalni put:</h3>
+              <ul className="space-y-3">
+                {member.bio.experience.map((exp, i) => (
+                  <li key={i} className="border-l-2 border-accent pl-4">
+                    <div className="font-semibold text-sm">{exp.title}</div>
+                    <p className="text-sm text-muted-foreground mt-1">{exp.desc}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {member.bio.expertise.length > 0 && (
+            <div>
+              <h3 className="font-display text-lg mb-3">Ekspertiza:</h3>
+              <ul className="space-y-2">
+                {member.bio.expertise.map((exp) => (
+                  <li key={exp} className="flex items-start gap-2 text-sm">
+                    <span className="text-accent mt-1">•</span>
+                    <span>{exp}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <p className="text-sm text-muted-foreground italic pt-2">{member.bio.closing}</p>
+        </div>
+
+        <button
+          onClick={onClose}
+          className="mt-6 inline-flex items-center gap-2 rounded-full bg-foreground text-background px-5 py-2 text-sm font-medium hover:bg-accent transition-colors"
+        >
+          Zatvori
+        </button>
+      </div>
+    </div>
   );
 }
 
