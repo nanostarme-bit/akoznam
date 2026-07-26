@@ -10,18 +10,25 @@ import { SiteFooter } from "@/components/site-footer";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Roditeljski Front — Pravo da budete roditelj ne sme zavisiti od pola" },
+      { title: "Roditeljski Front — Borba za jednaka roditeljska prava u Srbiji" },
       {
         name: "description",
         content:
-          "Besplatna pravna pomoć i podrška roditeljima — prvenstveno očevima — koji se bore za pravo da viđaju svoju decu.",
+          "Besplatna pravna pomoć i podrška roditeljima — prvenstveno očevima — koji se bore za pravo da viđaju svoju decu. Zajedničko starateljstvo, psihološka podrška i borba za izmenu zakona.",
       },
-      { property: "og:title", content: "Roditeljski Front" },
+      { name: "keywords", content: "roditeljska prava, zajedničko starateljstvo, pravna pomoć, očevi, Srbija" },
+      { property: "og:title", content: "Roditeljski Front — Borba za jednaka roditeljska prava" },
       {
         property: "og:description",
-        content: "Borba za jednaka roditeljska prava u Srbiji.",
+        content: "Besplatna pravna pomoć i podrška roditeljima koji se bore za pravo da viđaju svoju decu.",
       },
       { property: "og:image", content: heroImg },
+      { property: "og:url", content: "https://nanoestate.me" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Roditeljski Front — Borba za jednaka roditeljska prava" },
+      { name: "twitter:description", content: "Besplatna pravna pomoć i podrška roditeljima koji se bore za pravo da viđaju svoju decu." },
+      { name: "twitter:image", content: heroImg },
     ],
   }),
   component: Home,
@@ -61,7 +68,7 @@ function Hero() {
               <span className="h-px w-12 bg-foreground" />
               Roditeljski Front · roditeljskifront.org
             </div>
-            <h1 className="font-display text-[clamp(2.75rem,7vw,6.5rem)] leading-[0.95] tracking-[-0.03em] text-balance">
+            <h1 className="font-display text-[clamp(2rem,7vw,6.5rem)] leading-[0.95] tracking-[-0.03em] text-balance">
               <span className="shimmer">Pravo da budete</span>{" "}
               <span className="italic font-light text-accent">roditelj</span>
               <br />
@@ -1060,13 +1067,14 @@ function EventDialog({
 
   return (
     <div
-      className="fixed inset-0 z-[100] grid place-items-center bg-foreground/60 backdrop-blur-sm p-4"
+      className="fixed inset-0 z-[100] grid place-items-center bg-foreground/60 backdrop-blur-sm p-4 overflow-y-auto"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
+      aria-labelledby="dialog-title"
     >
       <div
-        className="relative w-full max-w-lg bg-background border border-border rounded-sm shadow-2xl p-8 lg:p-10"
+        className="relative w-full max-w-lg bg-background border border-border rounded-sm shadow-2xl p-6 sm:p-8 lg:p-10 my-4"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -1080,7 +1088,7 @@ function EventDialog({
         <div className="text-xs uppercase tracking-[0.25em] text-accent mb-2">
           ▍Prijava
         </div>
-        <h3 className="font-display text-3xl leading-tight text-pretty mb-1">
+        <h3 id="dialog-title" className="font-display text-2xl sm:text-3xl leading-tight text-pretty mb-1">
           {event.title}
         </h3>
         <p className="text-sm text-muted-foreground mb-6">
@@ -1112,7 +1120,7 @@ function EventDialog({
             <Field label="Broj učesnika" type="number" value={form.count} onChange={update("count")} maxLength={3} />
 
             {error && (
-              <p className="text-sm text-destructive">{error}</p>
+              <p className="text-sm text-destructive" role="alert" aria-live="polite">{error}</p>
             )}
 
             <button

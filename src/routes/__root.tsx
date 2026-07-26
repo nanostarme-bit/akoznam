@@ -71,17 +71,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   head: () => ({
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "viewport", content: "width=device-width, initial-scale=1, maximum-scale=5" },
       { title: "Roditeljski Front" },
-      { name: "description", content: "A modern, visually appealing website for human rights advocacy, showcasing information and resources." },
+      { name: "description", content: "Borba za jednaka roditeljska prava. Besplatna pravna pomoć, podrška i edukacija za roditelje u Srbiji." },
       { name: "author", content: "Roditeljski Front" },
-      { property: "og:title", content: "Roditeljski Front" },
-      { property: "og:description", content: "A modern, visually appealing website for human rights advocacy, showcasing information and resources." },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
+      { property: "og:title", content: "Roditeljski Front — Borba za jednaka roditeljska prava" },
+      { property: "og:description", content: "Besplatna pravna pomoć i podrška roditeljima koji se bore za pravo da viđaju svoju decu." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@RoditeljskiFront" },
-      { name: "twitter:title", content: "RoditeljskiFront" },
-      { name: "twitter:description", content: "A modern, visually appealing website for human rights advocacy, showcasing information and resources." },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:site", content: "@roditeljski_front" },
+      { name: "twitter:title", content: "Roditeljski Front" },
+      { name: "twitter:description", content: "Besplatna pravna pomoć i podrška roditeljima koji se bore za pravo da viđaju svoju decu." },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f11bcd14-4d02-4986-bcf3-ef9d7cfb8165/id-preview-a5f304e5--5a6f1fdd-1977-4d55-93a4-ae85dc710ca9.lovable.app-1778882236518.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f11bcd14-4d02-4986-bcf3-ef9d7cfb8165/id-preview-a5f304e5--5a6f1fdd-1977-4d55-93a4-ae85dc710ca9.lovable.app-1778882236518.png" },
     ],
@@ -100,8 +101,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="sr">
       <head>
+        <meta name="theme-color" content="#000000" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <link rel="canonical" href="https://nanoestate.me" />
+        <link rel="alternate" hrefLang="sr" href="https://nanoestate.me" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="apple-touch-icon" href="/favicon.svg" />
         <HeadContent />
       </head>
       <body>

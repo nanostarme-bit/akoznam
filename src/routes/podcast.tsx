@@ -7,19 +7,25 @@ import ytPreviewImg from "@/assets/youtube-channel-preview.jpg";
 export const Route = createFileRoute("/podcast")({
   head: () => ({
     meta: [
-      { title: "Podcast — Zabranjeni Roditelj | Roditeljski Front" },
+      { title: "Podcast Zabranjeni Roditelj — Razgovori o roditeljskim pravima | Roditeljski Front" },
       {
         name: "description",
         content:
-          "Podcast Zabranjeni Roditelj — razgovori o očinstvu, pravima roditelja, srpskim zakonima i borbi za decu. Slušajte na YouTube kanalu Roditeljskog Fronta.",
+          "Podcast Zabranjeni Roditelj — iskreni razgovori o očinstvu, pravima roditelja, srpskim zakonima i borbi za decu. Epizode sa advokatima, psiholozima i roditeljima. Slušajte na YouTube kanalu @zabranjeniroditelj",
       },
-      { property: "og:title", content: "Podcast — Zabranjeni Roditelj" },
+      { name: "keywords", content: "podcast, zabranjeni roditelj, roditeljska prava, očinstvo, pravna pomoć, Srbija" },
+      { property: "og:title", content: "Podcast Zabranjeni Roditelj — Razgovori o roditeljskim pravima" },
       {
         property: "og:description",
-        content:
-          "Iskreni razgovori sa stručnjacima i roditeljima. Pravo, psihologija, lična svedočanstva.",
+        content: "Iskreni razgovori sa stručnjacima i roditeljima. Pravo, psihologija, lična svedočanstva o borbi za decu.",
       },
       { property: "og:image", content: heroImg },
+      { property: "og:url", content: "https://nanoestate.me/podcast" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Podcast Zabranjeni Roditelj" },
+      { name: "twitter:description", content: "Iskreni razgovori sa stručnjacima i roditeljima o roditeljskim pravima." },
+      { name: "twitter:image", content: heroImg },
     ],
   }),
   component: PodcastPage,
@@ -44,7 +50,7 @@ function PodcastPage() {
                 <span className="h-px w-12 bg-foreground" />
                 Podcast · Epizode &amp; razgovori
               </div>
-              <h1 className="font-display text-[clamp(2.5rem,6.5vw,6rem)] leading-[0.95] tracking-[-0.03em] text-balance">
+              <h1 className="font-display text-[clamp(2rem,6.5vw,6rem)] leading-[0.95] tracking-[-0.03em] text-balance">
                 <span className="shimmer">Zabranjeni</span>{" "}
                 <span className="italic font-light text-accent">Roditelj</span>
               </h1>

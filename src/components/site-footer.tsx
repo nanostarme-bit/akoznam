@@ -78,14 +78,24 @@ export function SiteFooter() {
           <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-4">
             Bilten
           </div>
-          <form className="flex border-b border-foreground/40 pb-2">
+          <form className="flex border-b border-foreground/40 pb-2" onSubmit={(e) => {
+            e.preventDefault();
+            const input = e.currentTarget.querySelector('input') as HTMLInputElement;
+            if (input?.value) {
+              window.location.href = `mailto:pomoc@roditeljskifront.org?subject=Prijava za bilten&body=Email: ${encodeURIComponent(input.value)}`;
+              input.value = '';
+            }
+          }}>
             <input
               type="email"
               placeholder="vaša@adresa.rs"
+              required
+              aria-label="Email za bilten"
               className="flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground"
             />
             <button
-              type="button"
+              type="submit"
+              aria-label="Prijavi se za bilten"
               className="text-sm hover:text-accent transition-colors"
             >
               →
