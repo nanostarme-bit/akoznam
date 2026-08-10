@@ -45,6 +45,11 @@ export default defineConfig({
     build: {
       outDir: "dist",
     },
+    // Vite's preview server (used by the prerender step) defaults to binding "::",
+    // which fails with EAFNOSUPPORT on IPv4-only hosts such as CI containers.
+    preview: {
+      host: "127.0.0.1",
+    },
     plugins: [fixServerEntryPlugin()],
   },
 });

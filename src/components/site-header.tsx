@@ -45,7 +45,7 @@ export function SiteHeader() {
 
         <nav className="hidden lg:flex items-center gap-8 text-sm">
           {nav.map((n) =>
-            "to" in n ? (
+            n.to !== undefined ? (
               <Link
                 key={n.label}
                 to={n.to}
@@ -95,7 +95,7 @@ export function SiteHeader() {
       >
         <nav className="px-5 pb-6 pt-2 border-t border-border/60 bg-background/95 backdrop-blur-md flex flex-col">
           {nav.map((n) =>
-            "to" in n ? (
+            n.to !== undefined ? (
               <Link
                 key={n.label}
                 to={n.to}
