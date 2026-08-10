@@ -106,8 +106,8 @@ function RootShell({ children }: { children: React.ReactNode }) {
         <meta name="theme-color" content="#000000" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <link rel="canonical" href="https://nanoestate.me" />
-        <link rel="alternate" hrefLang="sr" href="https://nanoestate.me" />
+        <link rel="canonical" href="https://roditeljskifront.org" />
+        <link rel="alternate" hrefLang="sr" href="https://roditeljskifront.org" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="apple-touch-icon" href="/favicon.svg" />
         <HeadContent />

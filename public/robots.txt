@@ -4,7 +4,7 @@ Disallow: /admin
 Disallow: /*.json$
 Disallow: /*.xml$
 
-Sitemap: https://nanoestate.me/sitemap.xml
+Sitemap: https://roditeljskifront.org/sitemap.xml
 
 User-agent: GoogleBot
 Allow: /

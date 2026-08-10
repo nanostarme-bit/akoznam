@@ -20,7 +20,7 @@ export const Route = createFileRoute("/podcast")({
         content: "Iskreni razgovori sa stručnjacima i roditeljima. Pravo, psihologija, lična svedočanstva o borbi za decu.",
       },
       { property: "og:image", content: heroImg },
-      { property: "og:url", content: "https://nanoestate.me/podcast" },
+      { property: "og:url", content: "https://roditeljskifront.org/podcast" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Podcast Zabranjeni Roditelj" },

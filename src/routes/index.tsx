@@ -23,7 +23,7 @@ export const Route = createFileRoute("/")({
         content: "Besplatna pravna pomoć i podrška roditeljima koji se bore za pravo da viđaju svoju decu.",
       },
       { property: "og:image", content: heroImg },
-      { property: "og:url", content: "https://nanoestate.me" },
+      { property: "og:url", content: "https://roditeljskifront.org" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Roditeljski Front — Borba za jednaka roditeljska prava" },
